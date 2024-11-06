@@ -17,24 +17,15 @@ navegador.get(url)
 
 def switch_to_window(window_title):
     try:
-        # Encontrar a janela com o título especificado
         window = gw.getWindowsWithTitle(window_title)[0]
         window.activate()  # Ativar a janela
     except IndexError:
         print(f"Janela '{window_title}' não encontrada.")
-
-# Nome das janelas que você deseja ativar
-notepad_title = "Sem título - Bloco de Notas"  # Altere isso para o título exato do Bloco de Notas
-browser_title = "recursos humanos( “@outlook.com”) and brazil site:instagram.com/ - Pesquisa Google - Google Chrome"  # Altere isso para o título exato do seu navegador
+notepad_title = "Sem título - Bloco de Notas" 
+browser_title = "recursos humanos( “@outlook.com”) and brazil site:instagram.com/ - Pesquisa Google - Google Chrome"  
 switch_to_window(browser_title)
-
-
-
-
-# Loop para navegar pelas páginas até o botão "Próxima" não estar mais disponível
 while True:
     try:        
-        # Executa o comando de clique no botão
         navegador.execute_script("document.getElementById('pnnext').click();")
         pyautogui.hotkey('ctrl', 'a')
         pyautogui.hotkey('ctrl', 'c')
@@ -47,6 +38,5 @@ while True:
         time.sleep(4)
 
     except NoSuchElementException:
-        # Se o botão "Próxima" não for encontrado, saímos do loop
         print("Botão 'Próxima' não encontrado. Fim da navegação.")
         break
